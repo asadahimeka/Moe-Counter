@@ -4,21 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "bun index.js",
+    "dev": "bun run --watch index.js"
   },
   "keywords": [],
   "author": "journey-ad",
   "license": "MIT",
   "dependencies": {
-    "better-sqlite3": "^8.2.0",
-    "compression": "^1.7.4",
-    "dotenv": "^16.4.5",
-    "express": "^4.18.2",
-    "image-size": "^0.8.3",
-    "mime-types": "^2.1.27",
-    "mongoose": "^5.9.28",
-    "pug": "^3.0.0",
-    "zod": "^3.23.8"
+    "compression": "1.7.5",
+    "dotenv": "16.4.7",
+    "express": "4.21.2",
+    "image-size": "0.8.3",
+    "mime-types": "2.1.35",
+    "mongoose": "5.13.23",
+    "pug": "3.0.3",
+    "zod": "3.24.1"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
   }
 }

@@ -255,9 +255,9 @@ For information on counter usage and configuration, refer to the [demo website](
 ```shell
 $ git clone https://github.com/journey-ad/Moe-Counter.git
 $ cd Moe-Counter
-$ pnpm install
+$ bun install
 
-$ pnpm run start
+$ bun run start
 ```
 
 ### Configuration

@@ -77,8 +77,7 @@ app.get(["/@:name", "/get/@:name"],
     res.send(renderSvg);
 
     logger.debug(
-      data,
-      { theme, ...req.query },
+      JSON.stringify({ ...data, theme, ...req.query }),
       `ip: ${req.headers['x-forwarded-for'] || req.connection.remoteAddress}`,
       `ref: ${req.get("Referrer") || null}`,
       `ua: ${req.get("User-Agent") || null}`
@@ -125,8 +124,8 @@ async function pushDB() {
 
     const counters = Object.keys(__cache_counter).map((key) => {
       return {
-        name: key,
-        num: __cache_counter[key],
+        $name: key,
+        $num: __cache_counter[key],
       };
     });
 

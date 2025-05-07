@@ -1,9 +1,9 @@
 'use strict'
 
-const path = require('path')
-const Database = require('better-sqlite3')
+const path = require('node:path')
+const { Database } = require('bun:sqlite')
 
-const db = new Database(path.resolve(__dirname, '../count.db'))
+const db = new Database(path.resolve(__dirname, './count.db'))
 
 db.exec(`CREATE TABLE IF NOT EXISTS tb_count (
     id    INTEGER      PRIMARY KEY AUTOINCREMENT
@@ -12,7 +12,7 @@ db.exec(`CREATE TABLE IF NOT EXISTS tb_count (
     name  VARCHAR (32) NOT NULL
                        UNIQUE,
     num   BIGINT       NOT NULL
-                       DEFAULT (0) 
+                       DEFAULT (0)
 );`)
 
 function getNum(name) {
@@ -53,10 +53,12 @@ function setNumMulti(counters) {
     UPDATE SET \`num\` = $num;`)
 
     const setMany = db.transaction((counters) => {
-      for (const counter of counters) stmt.run(counter)
+      for (const counter of counters) {
+        stmt.run(counter)
+      }
     })
-
     setMany(counters)
+
     resolve()
   })
 }

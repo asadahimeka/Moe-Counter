@@ -1,11 +1,11 @@
-FROM node:14
-
+FROM oven/bun:1
 WORKDIR /app
-
+COPY bun.lock .
+COPY bunfig.toml .
+COPY package.json .
+RUN bun install --production
 COPY . .
-
-RUN yarn install
-
+USER bun
+ENV NODE_ENV production
+CMD [ "bun", "index.js" ]
 EXPOSE 3000
-
-CMD ["yarn", "start"]
